@@ -6,14 +6,13 @@ package poet;
 import java.io.File;
 import java.io.IOException;
 
-import graph.ConcreteVerticesGraph;
-
 /**
  * Example program using GraphPoet.
  * 
  * <p>PS2 instructions: you are free to change this example class.
  */
 public class Main {
+    
     /**
      * Generate example poetry.
      * 
@@ -21,9 +20,8 @@ public class Main {
      * @throws IOException if a poet corpus file cannot be found or read
      */
     public static void main(String[] args) throws IOException {
-        final GraphPoet nimoy = new GraphPoet(new File("src/poet/mugar-omni-theater.txt"));
-        final String input = "Test the system.";
+        final GraphPoet nimoy = new GraphPoet(new File("src/poet/my-corp.txt"));
+        final String input = "The minutes I spent on this project were many, and this plot will continue.";
         System.out.println(input + "\n>>>\n" + nimoy.poem(input));
     }
-    
 }

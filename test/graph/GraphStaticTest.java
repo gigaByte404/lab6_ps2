@@ -5,13 +5,10 @@ package graph;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Collections;
+import java.util.Set;
 
 import org.junit.Test;
-
-import poet.GraphPoet;
 
 /**
  * Tests for static methods of Graph.
@@ -20,12 +17,11 @@ import poet.GraphPoet;
  * tested in GraphInstanceTest.
  */
 public class GraphStaticTest {
-    ConcreteVerticesGraphTest cvgt = new ConcreteVerticesGraphTest();
+    
     // Testing strategy
     //   empty()
-    //  no inputs, only output is empty graph
-    //  observe with vertices()
-   
+    //     no inputs, only output is empty graph
+    //     observe with vertices()
     
     @Test(expected=AssertionError.class)
     public void testAssertionsEnabled() {
@@ -35,12 +31,18 @@ public class GraphStaticTest {
     @Test
     public void testEmptyVerticesEmpty() {
         assertEquals("expected empty() graph to have no vertices",
-                Collections.emptySet(), cvgt.emptyInstance().vertices());
+                Collections.emptySet(), Graph.empty().vertices());
     }
     
     // TODO test other vertex label types in Problem 3.2
-    
-    
-    
-    
+    @Test
+    public void testOtherLabels() {
+        Graph<Integer> g = Graph.empty();
+        g.add(34);
+        g.set(34, 45, 100);
+        Set<Integer> verticesSet = g.vertices();
+        assertEquals("expected size", 2, verticesSet.size());
+        assertTrue(verticesSet.contains(34));
+        assertTrue(verticesSet.contains(45));
+    }
 }
